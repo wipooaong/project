@@ -16,6 +16,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('eval-form', require('./components/EvaluationForm.vue'));
+
+
 
 const app = new Vue({
     el: '#app'

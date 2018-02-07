@@ -15,7 +15,7 @@ class InfoController extends Controller
         $brands = Brand::all();
         $series = Serie::all();
         $parts  = Part::all();
-            return view('create-info',compact('brands','series','parts'));
+        return view('create-info',compact('brands','series','parts'));
 
     }
 
@@ -26,7 +26,8 @@ class InfoController extends Controller
            $brand = Brand::find(request('brand'));
            $serie = Serie::find(request('serie'));
            $part  = Part::find(request('part'));
-            return view('eval',compact('license_plate','color','brand','serie','part'));
+
+           return view('eval',compact('license_plate','color','brand','serie','part'));
 
     }
 
