@@ -1,9 +1,16 @@
 @extends('layout')
     
-@section('content')
 
+@section('content')
 <eval-form inline-template :subparts="{{$part->subparts()->with('spares')->get()}}">
+
     <div class="ui four column grid relaxed">
+    <div class="ui longer modal">
+        <div class="header">{{$part->name}}</div>
+        <div class="scrolling content">
+            <p>{{$part->tip}}</p>
+        </div>
+    </div>
         <div class="row">
             <div class="column sixteen wide">
                 <h3>ข้อมูลลูกค้า</h3>
@@ -31,18 +38,34 @@
                     </div>
                 </div>
                 <h3 class="mt-8">รายการ</h3>
-                <table class="ui basic table">
+                <table class="ui  green table">
                     <thead>
                         <tr>
                             <th>ชื่อ</th>
+                            <th>จำนวน</th>
                             <th>ราคา</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="spare in selectedSpares">
+                        <tr v-for="(spare,key,index) in selectedSpares">
                             <td><strong>@{{ spare.name }}</strong></td>
                             <td>
+                            <button @click="decrease(spare)" class="ui mini icon button">
+                                <i class="minus icon"></i>
+                            </button>
+                                <span class="mx-4">@{{spare.qty}}</span>
+                            <button  @click="increase(spare)" class="ui mini icon button">
+                                <i class="plus icon"></i>
+                            </button>
+                            </td>
+                            <td>
                                 @{{spare.price}}
+                            </td>
+                            <td>
+                            <button  @click="remove(key,spare)" class="ui mini basic icon button">
+                                <i class="delete icon"></i>
+                            </button>
                             </td>
                             <!-- <td>
                                 <button class="ui basic mini compact icon button"><i class="plus icon"></i></button>
@@ -61,15 +84,56 @@
                 </table>
             </div>
         </div>
-        <h3 class="ml-2 mt-8">ชิ้นส่วน</h3>
+       <div class="flex">
+       <h3 class="ml-2 mt-8 mx-4">ชิ้นส่วน</h3>
+        <div class="item">
+            <button @click="showTips()" class="ui mini green icon button">
+                    <i class="info icon"></i>
+                    Tips
+            </button>
+         </div></div>
+
+        <div class="flex justify-center w-full my-8">
+             <img src="http://www.partsbase.ie/wp-content/uploads/2017/03/used-car-parts-Castlebar.jpg" alt="">
+        </div>
+
+        <div class="w-full my-8" v-for="subpart in subparts">
+        <h3>@{{subpart.name}}</h3>
+        <table class="ui basic table">
+            <thead>
+                <tr>
+                    <th class="two wide">Number</th>
+                    <th class="six wide">Name</th>
+                    <th class="two wide">Price</th>
+                    <th class="six wide">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="spare in subpart.spares">
+                    <td>@{{ spare.id}}</td>
+                    <td>@{{ spare.name}}</td>
+                    <td>@{{ spare.price }}</td>
+                    <td>          
+                    <button @click="onAdd(spare)" class="ui labeled icon button">
+                        <i class="add to cart icon"></i>
+                        Add
+                    </button>           
+                    
+                    </td>
+                </tr>
+            </tbody>    
+        </table>
     
+        </div>
+        
     
-        <div v-for="subpart in subparts" class="row">
-            <div v-for="spare in subpart.spares" class="four wide column">
+        <!-- <div v-for="subpart in subparts" class="row">
+             <p>@{{ subpart.name}}</p> 
+            <div v-for="spare in subpart.spares" class="two wide column">
                 <div class="card">
                     <div class="flex flex-col ">
                         <div class="flex justify-center">
-                            <img class="right floated h-48 ui image" src="http://cf.lnwfile.com/evh9g4.jpg">
+                             <img class="right floated h-48 ui image" src="http://cf.lnwfile.com/evh9g4.jpg">
                         </div>
                         <div class="flex justify-between my-4">
                             <div class="header text-xl font-bold">
@@ -85,10 +149,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 </eval-form>
-
-
 @endsection
