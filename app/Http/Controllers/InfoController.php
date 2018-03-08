@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Brand;
 use App\Serie;
 use App\Part;
@@ -31,9 +31,22 @@ class InfoController extends Controller
 
     }
 
-    public function save(){
-        return "save";
-    }
+    public function print(){
+
+        $license_plate = request('license_plate');
+        $color = request('color');
+
+        $brand = request('brand');
+        $serie = request('serie');
+        $part  = request('part');
+        $total  = request('total');
+
+
+         $spares_array =  json_decode(request('spares'),true);
+         $spares =  collect($spares_array);
+
+         $pdf = PDF::loadView('summary', compact('spares','total','license_plate','color','brand','serie','part'));
+         return $pdf->download('invoice.pdf');    }
 
 
 }

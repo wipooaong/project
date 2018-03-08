@@ -14,10 +14,19 @@
     <title>Document</title>
 </head>
 <body style="padding-top:20px">
+
         @section('modal')
 
         @show
     <div id="app" class="ui container">
+    <div class="ui secondary  menu">
+  <a href="/information/create" class="active item">
+    Home
+  </a>
+  <a href="/knowledges" class="item">
+    Knowledges
+  </a>
+</div>
         @section('content')
 
         @show

@@ -20,3 +20,9 @@ Route::get('/information/create','InfoController@create');
 Route::get('/information/eval','InfoController@evaluate');
 
 Route::get('/information/save','InfoController@save');
+
+Route::post('/information/print','InfoController@print');
+
+
+
+Route::get('/knowledges','TipController@index');

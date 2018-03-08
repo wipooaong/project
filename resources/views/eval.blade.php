@@ -12,26 +12,37 @@
         </div>
     </div>
         <div class="row">
-            <div class="column sixteen wide">
-                <h3>ข้อมูลลูกค้า</h3>
+            <form action="/information/print" method="post" class="column sixteen wide">
+            {{csrf_field()}} 
+               <div class="flex justify-between w-full">
+               <h3>ข้อมูลลูกค้า</h3>
+                <button type="submit" class="ui button">
+                     Print
+                </button>
+                </div>
                 <div class="ui fluid card">
                     <div class="content">
                         <div class="ui grid">
                             <div class="five column row">
                                 <div class="column">
                                     <span class="ui horizontal label">ทะเบียน</span> {{$license_plate}}
+                                    <input type="hidden" name="license_plate" value="{{$license_plate}}">
                                 </div>
                                 <div class="column">
                                     <span class="ui horizontal label">ยี่ห้อ</span> {{$brand->name}}
+                                    <input type="hidden" name="brand" value="{{$brand->name}}">
                                 </div>
                                 <div class="column">
                                     <span class="ui horizontal label">รุ่น</span> {{$serie->name}}
+                                    <input type="hidden" name="serie" value="{{$serie->name}}">
                                 </div>
                                 <div class="column">
                                     <span class="ui horizontal label">สี</span> {{$color}}
+                                    <input type="hidden" name="color" value="{{$color}}">
                                 </div>
                                 <div class="column">
                                     <span class="ui horizontal label">ส่วนที่ซ่อม</span> {{$part->name}}
+                                    <input type="hidden" name="part" value="{{$part->name}}">
                                 </div>
                             </div>
                         </div>
@@ -49,6 +60,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(spare,key,index) in selectedSpares">
+                            <input type="hidden" name="spares"  :value="JSON.stringify(selectedSpares)">
                             <td><strong>@{{ spare.name }}</strong></td>
                             <td>
                             <button @click="decrease(spare)" class="ui mini icon button">
@@ -77,12 +89,13 @@
                     <tfoot>
                         <tr>
                             <th>Total</th>
+                            <input type="hidden" name="total" :value="totalPrice">
                             <th>@{{ totalPrice  }}</th>
                             <th></th>
                         </tr>
                     </tfoot>
                 </table>
-            </div>
+            </form>
         </div>
        <div class="flex">
        <h3 class="ml-2 mt-8 mx-4">ชิ้นส่วน</h3>
