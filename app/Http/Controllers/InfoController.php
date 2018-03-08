@@ -10,43 +10,47 @@ use App\Part;
 
 class InfoController extends Controller
 {
-    public function create(){
+    public function create()
+    {
 
         $brands = Brand::all();
         $series = Serie::all();
-        $parts  = Part::all();
-        return view('create-info',compact('brands','series','parts'));
+        $parts = Part::all();
+        return view('create-info', compact('brands', 'series', 'parts'));
 
     }
 
-    public function evaluate(){
-           $license_plate = request('license_plate');
-           $color = request('color');
-        
-           $brand = Brand::find(request('brand'));
-           $serie = Serie::find(request('serie'));
-           $part  = Part::find(request('part'));
+    public function evaluate()
+    {
+        $license_plate = request('license_plate');
+        $color = request('color');
 
-           return view('eval',compact('license_plate','color','brand','serie','part'));
+        $brand = Brand::find(request('brand'));
+        $serie = Serie::find(request('serie'));
+        $part = Part::find(request('part'));
+
+        return view('eval', compact('license_plate', 'color', 'brand', 'serie', 'part'));
 
     }
 
-    public function print(){
+    public function print()
+    {
 
         $license_plate = request('license_plate');
         $color = request('color');
 
         $brand = request('brand');
         $serie = request('serie');
-        $part  = request('part');
-        $total  = request('total');
+        $part = request('part');
+        $total = request('total');
 
 
-         $spares_array =  json_decode(request('spares'),true);
-         $spares =  collect($spares_array);
+        $spares_array = json_decode(request('spares'), true);
+        $spares = collect($spares_array);
 
-         $pdf = PDF::loadView('summary', compact('spares','total','license_plate','color','brand','serie','part'));
-         return $pdf->download('invoice.pdf');    }
+        $pdf = PDF::loadView('summary', compact('spares', 'total', 'license_plate', 'color', 'brand', 'serie', 'part'));
+        return $pdf->download($license_plate . '.pdf');
+    }
 
 
 }

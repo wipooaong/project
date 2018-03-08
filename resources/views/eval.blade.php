@@ -8,7 +8,7 @@
     <div class="ui longer modal">
         <div class="header">{{$part->name}}</div>
         <div class="scrolling content">
-            <p>{{$part->tip}}</p>
+            <p>{!! html_entity_decode($part->tip) !!}</p>
         </div>
     </div>
         <div class="row">
@@ -63,13 +63,13 @@
                             <input type="hidden" name="spares"  :value="JSON.stringify(selectedSpares)">
                             <td><strong>@{{ spare.name }}</strong></td>
                             <td>
-                            <button @click="decrease(spare)" class="ui mini icon button">
+                            <a @click="decrease(spare)" class="ui mini icon button">
                                 <i class="minus icon"></i>
-                            </button>
+                            </a>
                                 <span class="mx-4">@{{spare.qty}}</span>
-                            <button  @click="increase(spare)" class="ui mini icon button">
+                            <a  @click="increase(spare)" class="ui mini icon button">
                                 <i class="plus icon"></i>
-                            </button>
+                            </a>
                             </td>
                             <td>
                                 @{{spare.price}}
@@ -107,7 +107,7 @@
          </div></div>
 
         <div class="flex justify-center w-full my-8">
-             <img src="http://www.partsbase.ie/wp-content/uploads/2017/03/used-car-parts-Castlebar.jpg" alt="">
+             <img src="{{$part->img}}" alt="">
         </div>
 
         <div class="w-full my-8" v-for="subpart in subparts">

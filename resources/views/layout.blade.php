@@ -6,27 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/semantic/semantic.css">
-   
-
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
   
-
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <title>Document</title>
+
+    <style>
+        .ui.secondary.menu {
+          background-color: #24a940;
+        }
+    </style>
 </head>
-<body style="padding-top:20px">
+<body style="">
 
         @section('modal')
 
         @show
+        <div class="ui secondary  menu px-8 bg-green">
+          <a href="/information/create" class="active item">
+            <span class="text-white">หน้าหลัก</span>
+          </a>
+          <a href="/knowledges" class="item">
+            <span class="text-white">คำถามที่พบบ่อย</span>
+          </a>
+        </div>
     <div id="app" class="ui container">
-    <div class="ui secondary  menu">
-  <a href="/information/create" class="active item">
-    Home
-  </a>
-  <a href="/knowledges" class="item">
-    Knowledges
-  </a>
-</div>
+    
         @section('content')
 
         @show
