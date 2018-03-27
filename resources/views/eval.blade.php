@@ -123,7 +123,7 @@
             </thead>
             <tbody>
                 <tr v-for="spare in subpart.spares">
-                    <td>@{{ spare.id}}</td>
+                    <td>@{{ spare.number}}</td>
                     <td>@{{ spare.name}}</td>
                     <td>@{{ spare.price }}</td>
                     <td>          

@@ -49,6 +49,10 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
+<center><h1>ใบประเมินราคาค่าบริการซ่อม</h1></center></br>
+<center><h3>ศูนย์&nbsp; อะไหล่ยนต์&nbsp; ลำพูน</h3></center></br>
+<center><h>โทร&nbsp; 053-520011, &nbsp;081-8846227&nbsp;&nbsp; Line:&nbsp; Suthep333</h4></center></br>
+
 
 <h4>ข้อมูลลูกค้า</h4>
 <table>
@@ -83,9 +87,18 @@ tr:nth-child(even) {
   </tr>
   @endforeach
   <tr>
-    <td colspan="3">Total :  {{$total}}</td>
+    <td colspan="3">Total :  <right>{{$total}}</right></td>
   </tr>
 </table>
-
+</br></br></br>
+</br>
+</br>
+</br>
+<right>................................................</right>
+<right>ช่าง</right>
+</br>
+</br>
+<right>................................................</right>
+<right>ลูกค้า</right>
 </body>
 </html>

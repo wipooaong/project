@@ -1,7 +1,7 @@
 @extends('layout')
     
 @section('content')
-
+<center><h1>โปรแกรมประเมินราคาค่าบริการซ่อมรถยนต์</h1></center>
 <form class="ui form" method="GET" action="/information/eval" >
     <h4 class="ui dividing header">ข้อมูลลูกค้า</h4>
     <div class="field">
@@ -54,5 +54,6 @@
     <button type="submit" class="ui button" tabindex="0">ต่อไป</button>
 </form>
 
+<CENTER><img src="https://www.img.in.th/images/bb0909cc70ca0f39e902b3d98c513647.jpg" alt="bb0909cc70ca0f39e902b3d98c513647.jpg" border="0" width="700" height="420" /></CENTER>
 
 @endsection
