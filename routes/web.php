@@ -15,11 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/information/create', 'InfoController@create');
-Route::get('/information/eval', 'InfoController@evaluate');
-Route::get('/information/save', 'InfoController@save');
-Route::post('/information/print', 'InfoController@print');
-Route::get('/knowledges', 'TipController@index');
+Route::get('/information/create', 'InfoController@create')->middleware('auth');
+Route::get('/information/eval', 'InfoController@evaluate')->middleware('auth');
+Route::get('/information/save', 'InfoController@save')->middleware('auth');
+Route::post('/information/print', 'InfoController@print')->middleware('auth');
+Route::get('/knowledges', 'TipController@index')->middleware('auth');
 
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@authen');
