@@ -48,6 +48,9 @@ class InfoController extends Controller
         $spares_array = json_decode(request('spares'), true);
         $spares = collect($spares_array);
 
+        //return view('summary', compact('spares', 'total', 'license_plate', 'color', 'brand', 'serie', 'part'));
+
+
         $pdf = PDF::loadView('summary', compact('spares', 'total', 'license_plate', 'color', 'brand', 'serie', 'part'));
         return $pdf->download($license_plate . '.pdf');
     }

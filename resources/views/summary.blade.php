@@ -90,15 +90,11 @@ tr:nth-child(even) {
     <td colspan="3">Total :  <right>{{$total}}</right></td>
   </tr>
 </table>
-</br></br></br>
-</br>
-</br>
-</br>
-<right>................................................</right>
-<right>ช่าง</right>
-</br>
-</br>
-<right>................................................</right>
-<right>ลูกค้า</right>
+<div style="display: flex; justify-content: flex-end; flex-direction: row;">
+  <div style="float:right">
+      <p style="margin-bottom:20px;">...................................ลูกค้า</p>
+      <p>....................................ช่าง</p>
+  </div>
+</div>
 </body>
 </html>

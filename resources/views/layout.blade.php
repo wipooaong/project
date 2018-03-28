@@ -28,6 +28,27 @@
           <a href="/knowledges" class="item">
             <span class="text-white">คำถามที่พบบ่อย</span>
           </a>
+          
+
+         <div class="right menu">
+            @if(Auth::user()->role_id == 1)
+
+            <a href="/admin" class="item">
+              <span class="text-white">จัดการข้อมูล</span>
+            </a>
+            @endif
+
+            <div class="ui dropdown item text-white">
+              {{Auth::user()->name}} <i class="dropdown icon"></i>
+              <div class="menu">
+                <a href="/logout" class="item text-white">Logout</a>
+                
+              </div>
+            </div>
+        </div>
+
+
+
         </div>
     <div id="app" class="ui container">
     
@@ -40,10 +61,14 @@
     src="https://code.jquery.com/jquery-3.1.1.min.js"
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>    
+
     <script src="/semantic/components/modal.js"></script>
     <script src="/semantic/components/transition.js"></script>
     <script src="/semantic/components/dimmer.js"></script>
-
+    <script src="/semantic/components/dropdown.js"></script>
+    <script>
+      $('.ui.dropdown').dropdown();
+    </script>
 
 </body>
 </html>

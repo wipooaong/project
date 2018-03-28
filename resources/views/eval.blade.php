@@ -107,7 +107,7 @@
          </div></div>
 
         <div class="flex justify-center w-full my-8">
-             <img src="{{$part->img}}" alt="">
+             <img src="/storage/{{$part->img}}" alt="">
         </div>
 
         <div class="w-full my-8" v-for="subpart in subparts">
