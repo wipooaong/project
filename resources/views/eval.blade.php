@@ -75,9 +75,9 @@
                                 @{{spare.price}}
                             </td>
                             <td>
-                            <button  @click="remove(key,spare)" class="ui mini basic icon button">
+                            <a  @click="remove(key,spare)" class="ui mini basic icon button">
                                 <i class="delete icon"></i>
-                            </button>
+                            </a>
                             </td>
                             <!-- <td>
                                 <button class="ui basic mini compact icon button"><i class="plus icon"></i></button>

@@ -11,10 +11,8 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', 'InfoController@create')->middleware('auth');
 Route::get('/information/create', 'InfoController@create')->middleware('auth');
 Route::get('/information/eval', 'InfoController@evaluate')->middleware('auth');
 Route::get('/information/save', 'InfoController@save')->middleware('auth');
