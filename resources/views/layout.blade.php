@@ -14,6 +14,10 @@
         .ui.secondary.menu {
           background-color: #24a940;
         }
+
+        .ui.label.white{
+            background-color: white;
+        }
     </style>
 </head>
 <body style="">
@@ -50,12 +54,17 @@
 
 
         </div>
-    <div id="app" class="ui container">
-    
-        @section('content')
+        <div class="flex">
+            <div>
+               
+            </div>
+          <div id="app" class="ui  px-8 container">
+            @section('content')
 
-        @show
-    </div>
+            @show
+        </div>
+       
+        </div>
     <script src="/js/app.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.1.1.min.js"

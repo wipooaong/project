@@ -100,15 +100,26 @@
        <div class="flex">
        <h3 class="ml-2 mt-8 mx-4">ชิ้นส่วน</h3>
         <div class="item">
-            <button @click="showTips()" class="ui mini green icon button">
-                    <i class="info icon"></i>
-                    Tips
-            </button>
-         </div></div>
+           
+         </div>
+        </div>
 
         <div class="flex justify-center w-full my-8">
              <img src="/storage/{{$part->img}}" alt="">
         </div>
+
+       <div class="w-full py-4">
+                <div class="w-full bg-green py-4 text-white rounded-lg">
+                        <div class="ml-6 mb-4">
+                                <a class="ui label white">
+                                        <i class="info icon"></i>
+                                        Tips
+                                </a>
+                           </div>
+                        <p>{!! html_entity_decode($part->tip) !!}</p>
+        
+                </div>
+       </div>
 
         <div class="w-full my-8" v-for="subpart in subparts">
         <h3>@{{subpart.name}}</h3>
